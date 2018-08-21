@@ -1,17 +1,74 @@
-# React Native Router v4.x [![Backers on Open Collective](https://opencollective.com/react-native-router-flux/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/react-native-router-flux/sponsors/badge.svg)](#sponsors) [![Join the chat at https://gitter.im/aksonov/react-native-router-flux](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aksonov/react-native-router-flux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Codacy Badge](https://api.codacy.com/project/badge/grade/c6d869e2367a4fb491efc9de228c5ac6)](https://www.codacy.com/app/aksonov-github/react-native-router-flux) [![npm version](https://badge.fury.io/js/react-native-router-flux.svg)](http://badge.fury.io/js/react-native-router-flux) [![CircleCI](https://circleci.com/gh/aksonov/react-native-router-flux.svg?style=svg)](https://circleci.com/gh/aksonov/react-native-router-flux)
+# Installation guide to use RNRF with Redux 
 
-[Follow author @PAksonov](https://twitter.com/PAksonov)
+# How to use
 
-#### NOTE: v4 based on [React Navigation v2.x](https://reactnavigation.org/). See [this branch](https://github.com/aksonov/react-native-router-flux/tree/v3) and [docs](https://github.com/aksonov/react-native-router-flux/blob/master/README3.md) for v3 based on deprecated React Native Experimental Navigation API. It is not supported and may not work with latest React Native versions.
+First , Edit your  Package.json required to use for this library which is also compatible with Redux  make sure to use below versions
+just copy paste below dependencies in your package.json
+
+# Package.json
+
+
+```js
+{
+  "name": "Example",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "resolutions": {
+    "*/@babel/cli": "7.0.0-beta.54",
+    "*/@babel/core": "7.0.0-beta.54",
+    "*/@babel/code-frame": "7.0.0-beta.54"
+  },
+  "dependencies": {
+    "eslint": "^5.2.0",
+    "prop-types": "^15.6.2",
+    "react": "16.3.1",
+    "react-native": "0.55.4",
+    "react-native-router-flux": "^4.0.1",
+    "react-navigation": "^2.11.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-jest": "23.4.2",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "23.5.0",
+    "react-test-renderer": "16.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
+
+```
+
+
+first delete your existing node modules folder and hit following command. than run below commands
+
+
+# Terminal command
+```bash
+
+# Install dependencies
+npm install --save
+
+# Run it for android
+react-native run-android 
+
+# Run it for Ios
+react-native run-ios
+```
+
+
 
 ___
 
 * [Example](#try-the-example-app)
-* [Motivation](https://gist.github.com/aksonov/e2d7454421e44b1c4c72214d14053410)
-* [v4 Features](#v4-features)
-* [API](/docs/API.md)
-* [Migrating from v3](/docs/MIGRATION.md)
-* [Sponsors/Backers/Contributors](#contributors)
 
 
 Define all your routes in one React component...
@@ -51,60 +108,7 @@ For a full listing of the API, [view the API docs](https://github.com/aksonov/re
 
 ![rnrf](https://user-images.githubusercontent.com/3681859/27937441-ef61d932-626b-11e7-885f-1db7dc74b32e.gif)
 
-```bash
-# Get the code
-git clone https://github.com/aksonov/react-native-router-flux.git
-cd react-native-router-flux/Example
-
-# Install dependencies
-yarn
-
-# Run it
-react-native run-ios
-```
-
-## v4 Features
-* Based on latest [React Navigation](https://reactnavigation.org) API
-* Separate navigation logic from presentation. You may change now navigation state directly from your business logic code - stores/reducers/etc. navigationStore
-* Built-in state machine (v3 `Switch` replacement)
-  * Each `Scene` with `component` defined can have `onEnter`/`onExit`/`on` handlers.
-  * `onEnter`/`on` handler can be async.
-  * For 'truthy' return of `onEnter`/`on`, `success` handler (if defined) will be executed
-    * if `success` is a string then router will navigate to the `Scene` with that key
-  * in case of handler's failure, `failure` prop (if defined) will be run.
-  * Combining `onEnter`, `onExit`, `success`, and `failure` makes patterns like authentication, data validation, and conditional transitions simple and intuitive.
-* [MobX](https://mobx.js.org/)-friendly: all scenes are wrapped with `observer`. You may subscribe to `navigationStore` (`Actions` in v3) and observe current navigation state. Not applicable to Redux.
-* Flexible nav bar customization not currently allowed by React Navigation:
-https://github.com/react-community/react-navigation/issues/779
-* Drawer support (provided by React Navigation)
-* Inheritance of scene attributes allow you to avoid any code/attribute duplications. Adding `rightTitle` to a scene will apply to all child scenes. See example app.
-* Access to your app navigations state as simple as `Actions.state`.
-* Use `Actions.currentScene` to get name of current scene.
-
-## Contributors
-
-This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
-<a href="https://github.com/aksonov/react-native-router-flux/graphs/contributors"><img src="https://opencollective.com/react-native-router-flux/contributors.svg?width=890" /></a>
 
 
-## Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/react-native-router-flux#backer)]
-
-<a href="https://opencollective.com/react-native-router-flux#backers" target="_blank"><img src="https://opencollective.com/react-native-router-flux/backers.svg?width=890"></a>
 
 
-## Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/react-native-router-flux#sponsor)]
-
-<a href="https://opencollective.com/react-native-router-flux/sponsor/0/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/1/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/2/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/3/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/4/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/5/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/6/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/7/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/8/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/react-native-router-flux/sponsor/9/website" target="_blank"><img src="https://opencollective.com/react-native-router-flux/sponsor/9/avatar.svg"></a>
