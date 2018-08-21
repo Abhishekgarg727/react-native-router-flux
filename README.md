@@ -2,7 +2,10 @@
 
 # How to use
 
-First , Edit your  Package.json required to use for this library which is also compatible with Redux  make sure to use below versions
+First , Edit your  Package.json required to use for this library which is also compatible with Redux .
+
+make sure to use below versions and your all dependencies , including dev-Dependencies , Dependencies , script -test , jest and resolutions .
+
 just copy paste below dependencies in your package.json
 
 # Package.json
