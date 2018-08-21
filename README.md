@@ -48,7 +48,7 @@ just copy paste below dependencies in your package.json
 ```
 
 
-first delete your existing node modules folder and hit following command. than run below commands
+first delete your existing node modules folder and hit following commands
 
 
 # Terminal command
@@ -64,11 +64,8 @@ react-native run-android
 react-native run-ios
 ```
 
-
-
-___
-
-* [Example](#try-the-example-app)
+# here is best example  
+https://medium.com/differential/react-native-basics-using-react-native-router-flux-f11e5128aff9
 
 
 Define all your routes in one React component...
