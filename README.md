@@ -101,7 +101,7 @@ Actions.refresh({param1: 'hello', param2: 'world'})
 
 For a full listing of the API, [view the API docs](https://github.com/aksonov/react-native-router-flux/blob/master/docs/API.md).
 
-## Try the [example app](https://github.com/aksonov/react-native-router-flux/tree/master/Example)
+# Example look
 
 ![rnrf](https://user-images.githubusercontent.com/3681859/27937441-ef61d932-626b-11e7-885f-1db7dc74b32e.gif)
 
